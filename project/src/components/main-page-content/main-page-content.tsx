@@ -41,26 +41,11 @@ function MainPageContent(): JSX.Element {
         </ul>
 
         <div className="catalog__films-list">
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
-          <MovieCardSmall />
+          {
+            Array(20)
+              .fill(null).map((item, index) => item = index)
+              .map((item) => <MovieCardSmall key={item} />)
+          }
         </div>
 
         <div className="catalog__more">
@@ -70,7 +55,7 @@ function MainPageContent(): JSX.Element {
 
       <footer className="page-footer">
         <div className="logo">
-          <a className="logo__link logo__link--light">
+          <a href="#" className="logo__link logo__link--light">
             <span className="logo__letter logo__letter--1">W</span>
             <span className="logo__letter logo__letter--2">T</span>
             <span className="logo__letter logo__letter--3">W</span>

@@ -24,7 +24,7 @@ function MovieReviews(): JSX.Element {
               </div>
             </li>
             <li className="user-block__item">
-              <a className="user-block__link">Sign out</a>
+              <a href="#" className="user-block__link">Sign out</a>
             </li>
           </ul>
         </header>
@@ -81,7 +81,7 @@ function MovieReviews(): JSX.Element {
               <div className="film-card__reviews-col">
                 <div className="review">
                   <blockquote className="review__quote">
-                    <p className="review__text">Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed films in years.</p>
+                    <p className="review__text">Discerning travellers and Wes Anderson fans will luxuriate in&nbsp;the glorious Mittel-European kitsch of&nbsp;one of&nbsp;the director&rsquo;s funniest and most exquisitely designed films in&nbsp;years.</p>
 
                     <footer className="review__details">
                       <cite className="review__author">Kate Muir</cite>
@@ -94,7 +94,7 @@ function MovieReviews(): JSX.Element {
 
                 <div className="review">
                   <blockquote className="review__quote">
-                    <p className="review__text">Anderson's films are too precious for some, but for those of us willing to lose ourselves in them, they're a delight. "The Grand Budapest Hotel" is no different, except that he has added a hint of gravitas to the mix, improving the recipe.</p>
+                    <p className="review__text">Anderson&rsquo;s films are too precious for some, but for those of&nbsp;us willing to&nbsp;lose ourselves in&nbsp;them, they&rsquo;re a&nbsp;delight. &laquo;The Grand Budapest Hotel&raquo; is&nbsp;no&nbsp;different, except that he&nbsp;has added a&nbsp;hint of&nbsp;gravitas to&nbsp;the mix, improving the recipe.</p>
 
                     <footer className="review__details">
                       <cite className="review__author">Bill Goodykoontz</cite>
@@ -107,7 +107,7 @@ function MovieReviews(): JSX.Element {
 
                 <div className="review">
                   <blockquote className="review__quote">
-                    <p className="review__text">I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.</p>
+                    <p className="review__text">I&nbsp;didn&rsquo;t find it&nbsp;amusing, and while&nbsp;I can appreciate the creativity, it&rsquo;s an&nbsp;hour and 40&nbsp;minutes&nbsp;I wish&nbsp;I could take back.</p>
 
                     <footer className="review__details">
                       <cite className="review__author">Amanda Greever</cite>

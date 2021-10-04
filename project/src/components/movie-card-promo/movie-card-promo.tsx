@@ -1,6 +1,3 @@
-/*
-Теперь, используя props, добавим динамики в компоненты. Для этого в компоненте главной страницы приложения определите изменяемые данные — это будет название, жанр и дата выхода промо-фильма (того, что в шапке страницы). Получите их из props и вставьте в JSX компонента.
- */
 
 type MovieCardPromoProps = {
   name: string,
@@ -18,7 +15,7 @@ function MovieCardPromo({name, genre, released}: MovieCardPromoProps): JSX.Eleme
 
       <header className="page-header film-card__head">
         <div className="logo">
-          <a className="logo__link">
+          <a href="#" className="logo__link">
             <span className="logo__letter logo__letter--1">W</span>
             <span className="logo__letter logo__letter--2">T</span>
             <span className="logo__letter logo__letter--3">W</span>
@@ -32,7 +29,7 @@ function MovieCardPromo({name, genre, released}: MovieCardPromoProps): JSX.Eleme
             </div>
           </li>
           <li className="user-block__item">
-            <a className="user-block__link">Sign out</a>
+            <a href="#" className="user-block__link">Sign out</a>
           </li>
         </ul>
       </header>

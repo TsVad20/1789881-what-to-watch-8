@@ -24,7 +24,7 @@ function MovieDetails(): JSX.Element {
               </div>
             </li>
             <li className="user-block__item">
-              <a className="user-block__link">Sign out</a>
+              <a href="#" className="user-block__link">Sign out</a>
             </li>
           </ul>
         </header>
@@ -103,20 +103,20 @@ function MovieDetails(): JSX.Element {
               </div>
 
               <div className="film-card__text-col">
-                                      <p className="film-card__details-item">
-                                        <strong className="film-card__details-name">Run Time</strong>
-                                        <span className="film-card__details-value">1h 39m</span>
-                                      </p>
-                                      <p className="film-card__details-item">
-                                        <strong className="film-card__details-name">Genre</strong>
-                                        <span className="film-card__details-value">Comedy</span>
-                                      </p>
-                                      <p className="film-card__details-item">
-                                        <strong className="film-card__details-name">Released</strong>
-                                        <span className="film-card__details-value">2014</span>
-                                      </p>
-                                    </div>
-          </div>
+                <p className="film-card__details-item">
+                  <strong className="film-card__details-name">Run Time</strong>
+                  <span className="film-card__details-value">1h 39m</span>
+                </p>
+                <p className="film-card__details-item">
+                  <strong className="film-card__details-name">Genre</strong>
+                  <span className="film-card__details-value">Comedy</span>
+                </p>
+                <p className="film-card__details-item">
+                  <strong className="film-card__details-name">Released</strong>
+                  <span className="film-card__details-value">2014</span>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
