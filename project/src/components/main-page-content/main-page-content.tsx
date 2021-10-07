@@ -43,7 +43,7 @@ function MainPageContent(): JSX.Element {
         <div className="catalog__films-list">
           {
             Array(20)
-              .fill(null).map((item, index) => item = index)
+              .fill(null).map((item, index) => index)
               .map((item) => <MovieCardSmall key={item} />)
           }
         </div>
