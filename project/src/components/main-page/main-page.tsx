@@ -1,22 +1,23 @@
 import MovieCardPromo from '../movie-card-promo/movie-card-promo';
 import React from 'react';
 import MainPageContent from '../main-page-content/main-page-content';
+import { Film } from '../../types/films';
+import { PromoFilm } from '../../types/promo-film';
 
 type MainPageProps = {
-  name: string,
-  genre: string,
-  released: string,
+  promoFilm:PromoFilm
+  films:Film[]
 }
 
-function MainPage({name, genre, released}: MainPageProps): JSX.Element {
+function MainPage({promoFilm, films}: MainPageProps): JSX.Element {
   return (
     <React.Fragment>
       <MovieCardPromo
-        name={name}
-        genre={genre}
-        released={released}
+        promoFilm={promoFilm}
       />
-      <MainPageContent />
+      <MainPageContent
+        films={films}
+      />
     </React.Fragment>
   );
 }

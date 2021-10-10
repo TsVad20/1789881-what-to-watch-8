@@ -1,12 +1,11 @@
+import { PromoFilm } from '../../types/promo-film';
 import Logo from '../logo/logo';
 
 type MovieCardPromoProps = {
-  name: string,
-  genre: string,
-  released: string,
+  promoFilm:PromoFilm
 }
 
-function MovieCardPromo({name, genre, released}: MovieCardPromoProps): JSX.Element{
+function MovieCardPromo({promoFilm}: MovieCardPromoProps): JSX.Element{
   return (
     <section className="film-card">
       <div className="film-card__bg">
@@ -35,10 +34,10 @@ function MovieCardPromo({name, genre, released}: MovieCardPromoProps): JSX.Eleme
           </div>
 
           <div className="film-card__desc">
-            <h2 className="film-card__title">{name}</h2>
+            <h2 className="film-card__title">{promoFilm.name}</h2>
             <p className="film-card__meta">
-              <span className="film-card__genre">{genre}</span>
-              <span className="film-card__year">{released}</span>
+              <span className="film-card__genre">{promoFilm.genre}</span>
+              <span className="film-card__year">{promoFilm.released}</span>
             </p>
 
             <div className="film-card__buttons">

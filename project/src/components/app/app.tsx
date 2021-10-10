@@ -8,22 +8,22 @@ import MyList from '../my-list/my-list';
 import AddReview from '../add-review/add-review';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
+import { Film } from '../../types/films';
+import { PromoFilm } from '../../types/promo-film';
 
 type AppProps = {
-  name: string,
-  genre: string,
-  released: string,
+  promoFilm:PromoFilm
+  films:Film[]
 }
 
-function App({ name, genre, released }: AppProps): JSX.Element {
+function App({ promoFilm, films }: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.Main}>
           <MainPage
-            name={name}
-            genre={genre}
-            released={released}
+            promoFilm={promoFilm}
+            films={films}
           />
         </Route>
         <Route exact path={AppRoute.SignIn}>

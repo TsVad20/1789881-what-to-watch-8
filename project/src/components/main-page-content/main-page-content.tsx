@@ -1,6 +1,11 @@
+import { Film } from '../../types/films';
 import MovieCardSmall from '../movie-card-small/movie-card-small';
 
-function MainPageContent(): JSX.Element {
+type MainPageContentProps = {
+  films: Film[];
+};
+
+function MainPageContent({ films }: MainPageContentProps): JSX.Element {
 
   return (
     <div className="page-content">
@@ -41,11 +46,7 @@ function MainPageContent(): JSX.Element {
         </ul>
 
         <div className="catalog__films-list">
-          {
-            Array(20)
-              .fill(null).map((item, index) => index)
-              .map((item) => <MovieCardSmall key={item} />)
-          }
+          {films.map((film) => <MovieCardSmall key={film.id} film={film} />)}
         </div>
 
         <div className="catalog__more">
