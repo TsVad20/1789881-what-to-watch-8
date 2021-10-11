@@ -1,7 +1,7 @@
 import MovieCardPromo from '../movie-card-promo/movie-card-promo';
 import React from 'react';
 import MainPageContent from '../main-page-content/main-page-content';
-import { Film } from '../../types/films';
+import { Film } from '../../types/film';
 import { PromoFilm } from '../../types/promo-film';
 
 type MainPageProps = {

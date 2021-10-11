@@ -8,15 +8,17 @@ import MyList from '../my-list/my-list';
 import AddReview from '../add-review/add-review';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
-import { Film } from '../../types/films';
+import { Film } from '../../types/film';
 import { PromoFilm } from '../../types/promo-film';
+import { Video } from '../../types/video';
 
 type AppProps = {
   promoFilm:PromoFilm
   films:Film[]
+  video:Video
 }
 
-function App({ promoFilm, films }: AppProps): JSX.Element {
+function App({ promoFilm, films, video }: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
@@ -33,7 +35,9 @@ function App({ promoFilm, films }: AppProps): JSX.Element {
           <MoviePage />
         </Route>
         <Route exact path={AppRoute.Player}>
-          <Player />
+          <Player
+            video={video}
+          />
         </Route>
         <PrivateRoute
           exact

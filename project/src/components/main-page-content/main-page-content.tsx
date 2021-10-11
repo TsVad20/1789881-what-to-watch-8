@@ -1,4 +1,4 @@
-import { Film } from '../../types/films';
+import { Film } from '../../types/film';
 import MovieCardSmall from '../movie-card-small/movie-card-small';
 
 type MainPageContentProps = {
