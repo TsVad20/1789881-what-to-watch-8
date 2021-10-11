@@ -42,14 +42,14 @@ function App({ promoFilm, films, video }: AppProps): JSX.Element {
         <PrivateRoute
           exact
           path={AppRoute.MyList}
-          render={() => <MyList />}
+          render={() => <MyList films={films}/>}
           authorizationStatus={AuthorizationStatus.NoAuth}
         >
         </PrivateRoute>
         <PrivateRoute
           exact
           path={AppRoute.AddReview}
-          render={() => <AddReview />}
+          render={() => <AddReview promoFilm={promoFilm}/>}
           authorizationStatus={AuthorizationStatus.NoAuth}
         >
         </PrivateRoute>

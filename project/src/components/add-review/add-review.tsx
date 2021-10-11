@@ -1,12 +1,17 @@
+import { PromoFilm } from '../../types/promo-film';
 import Logo from '../logo/logo';
 
-function AddReview(): JSX.Element {
+type AddReviewProps = {
+  promoFilm: PromoFilm
+};
+
+function AddReview({promoFilm}:AddReviewProps): JSX.Element {
 
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={promoFilm.poster} alt={promoFilm.name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -17,7 +22,7 @@ function AddReview(): JSX.Element {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                <a href="film-page.html" className="breadcrumbs__link">{promoFilm.name}</a>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
