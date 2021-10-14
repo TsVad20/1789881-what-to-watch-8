@@ -2,7 +2,7 @@ import React from 'react';
 import MovieOverview from '../movie-overview/movie-overview';
 import MoviePageContent from '../movie-page-content/movie-page-content';
 
-function MoviePage(): JSX.Element {
+function MoviePageOverview(): JSX.Element {
   return (
     <React.Fragment>
       <MovieOverview />
@@ -11,4 +11,4 @@ function MoviePage(): JSX.Element {
   );
 }
 
-export default MoviePage;
+export default MoviePageOverview;

@@ -1,5 +1,5 @@
 import { Film } from '../../types/film';
-import MovieCardSmall from '../movie-card-small/movie-card-small';
+import FilmsList from '../films-list/films-list';
 
 type MainPageContentProps = {
   films: Film[];
@@ -45,9 +45,9 @@ function MainPageContent({ films }: MainPageContentProps): JSX.Element {
           </li>
         </ul>
 
-        <div className="catalog__films-list">
-          {films.map((film) => <MovieCardSmall key={film.id} film={film} />)}
-        </div>
+        <FilmsList
+          films = {films}
+        />
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>

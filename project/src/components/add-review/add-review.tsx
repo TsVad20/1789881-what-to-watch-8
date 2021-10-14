@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import { PromoFilm } from '../../types/promo-film';
 import Logo from '../logo/logo';
 
@@ -11,7 +13,7 @@ function AddReview({promoFilm}:AddReviewProps): JSX.Element {
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src={promoFilm.poster} alt={promoFilm.name} />
+          <img src="img/bg-the-grand-budapest-hotel.jpg" alt={promoFilm.name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -22,7 +24,7 @@ function AddReview({promoFilm}:AddReviewProps): JSX.Element {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">{promoFilm.name}</a>
+                <Link to={AppRoute.Film} className="breadcrumbs__link">{promoFilm.name}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
@@ -43,7 +45,7 @@ function AddReview({promoFilm}:AddReviewProps): JSX.Element {
         </header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+          <img src={promoFilm.poster} alt={promoFilm.name} width="218" height="327" />
         </div>
       </div>
 

@@ -1,15 +1,17 @@
+import { AuthInfo } from '../../types/auth-info';
 import { PromoFilm } from '../../types/promo-film';
 import Logo from '../logo/logo';
 
 type MovieCardPromoProps = {
-  promoFilm:PromoFilm
+  promoFilm: PromoFilm
+  authInfo: AuthInfo
 }
 
-function MovieCardPromo({promoFilm}: MovieCardPromoProps): JSX.Element{
+function MovieCardPromo({promoFilm, authInfo}: MovieCardPromoProps): JSX.Element{
   return (
     <section className="film-card">
       <div className="film-card__bg">
-        <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+        <img src="img/bg-the-grand-budapest-hotel.jpg" alt={promoFilm.name} />
       </div>
       <h1 className="visually-hidden">WTW</h1>
 
@@ -19,7 +21,7 @@ function MovieCardPromo({promoFilm}: MovieCardPromoProps): JSX.Element{
         <ul className="user-block">
           <li className="user-block__item">
             <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+              <img src={authInfo.avatarUrl} alt={authInfo.name} width="63" height="63" />
             </div>
           </li>
           <li className="user-block__item">

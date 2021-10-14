@@ -1,6 +1,7 @@
 import { Film } from '../../types/film';
+import FilmsList from '../films-list/films-list';
 import Logo from '../logo/logo';
-import MovieCardSmall from '../movie-card-small/movie-card-small';
+
 
 type MyListProps = {
   films: Film[];
@@ -30,9 +31,9 @@ function MyList({films}:MyListProps): JSX.Element {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <div className="catalog__films-list">
-          {films.map((film) => <MovieCardSmall key={film.id} film={film} />)}
-        </div>
+        <FilmsList
+          films={films}
+        />
       </section>
 
       <footer className="page-footer">
