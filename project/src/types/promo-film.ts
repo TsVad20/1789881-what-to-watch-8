@@ -3,4 +3,5 @@ export type PromoFilm = {
   poster: string;
   genre: string;
   released: number;
+  posterBackGround : string;
 }

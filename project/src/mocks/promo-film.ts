@@ -3,4 +3,5 @@ export const promoFilm = {
   poster: 'img/the-grand-budapest-hotel-poster.jpg',
   genre: 'Drama',
   released: 2014,
+  posterBackGround: 'img/bg-the-grand-budapest-hotel.jpg',
 };
