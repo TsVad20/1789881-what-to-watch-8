@@ -8,24 +8,21 @@ import MyList from '../my-list/my-list';
 import AddReview from '../add-review/add-review';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import { Film } from '../../types/film';
-import { PromoFilm } from '../../types/promo-film';
 import { Video } from '../../types/video';
 import { AuthInfo } from '../../types/auth-info';
 
 type AppProps = {
-  promoFilm: PromoFilm
   films: Film[]
   video: Video
   authInfo: AuthInfo
 }
 
-function App({ promoFilm, films, video, authInfo }: AppProps): JSX.Element {
+function App({ films, video, authInfo }: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.Main}>
           <MainPage
-            promoFilm = {promoFilm}
             films = {films}
             authInfo = {authInfo}
           />
@@ -43,7 +40,7 @@ function App({ promoFilm, films, video, authInfo }: AppProps): JSX.Element {
         </Route>
         <Route exact path={AppRoute.AddReview}>
           <AddReview
-            promoFilm={promoFilm}
+            films={films}
           />
         </Route>
         <Route exact path={AppRoute.MyList}>

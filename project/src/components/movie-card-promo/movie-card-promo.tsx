@@ -1,13 +1,14 @@
 import { AuthInfo } from '../../types/auth-info';
-import { PromoFilm } from '../../types/promo-film';
+import { Film } from '../../types/film';
 import Logo from '../logo/logo';
 
 type MovieCardPromoProps = {
-  promoFilm: PromoFilm
+  films: Film[]
   authInfo: AuthInfo
 }
 
-function MovieCardPromo({promoFilm, authInfo}: MovieCardPromoProps): JSX.Element{
+function MovieCardPromo({films, authInfo}: MovieCardPromoProps): JSX.Element{
+  const [promoFilm] = films;
   return (
     <section className="film-card">
       <div className="film-card__bg">

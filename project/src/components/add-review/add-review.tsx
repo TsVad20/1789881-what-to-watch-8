@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom';
-import { PromoFilm } from '../../types/promo-film';
 import Logo from '../logo/logo';
 import { AppRoute } from '../../const';
 import AddReviewForm from '../add-review-form/add-review-form';
+import { Film } from '../../types/film';
 
 type AddReviewProps = {
-  promoFilm: PromoFilm;
+  films: Film[]
 }
 
-function AddReview({promoFilm}: AddReviewProps): JSX.Element {
+function AddReview({films}: AddReviewProps): JSX.Element {
 
+  const [promoFilm] = films;
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
