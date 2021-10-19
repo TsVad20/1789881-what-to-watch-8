@@ -1,4 +1,5 @@
 import { FormEvent, ChangeEvent, useState } from 'react';
+
 function AddReviewForm(): JSX.Element {
 
   const [commentPost, setCommentPost] = useState({
@@ -23,6 +24,7 @@ function AddReviewForm(): JSX.Element {
     <div className="add-review">
       <form action="#" onSubmit = {(evt: FormEvent<HTMLFormElement>) =>{
         evt.preventDefault();
+
       }} className="add-review__form"
       >
         <div className="rating">
