@@ -1,0 +1,68 @@
+import { Film } from '../types/film';
+
+export const films:Film[] = [
+  {
+    id: 1,
+    name: 'The Grand Budapest Hotel',
+    poster: 'img/the-grand-budapest-hotel-poster.jpg',
+    genre: 'Drama',
+    released: 2014,
+    posterBackGround: 'img/bg-the-grand-budapest-hotel.jpg',
+  },
+  {
+    id: 2,
+    name: 'Bohemian Rhapsody',
+    poster: 'img/bohemian-rhapsody.jpg',
+    genre: 'Comedy',
+    released: 2015,
+    posterBackGround: 'img/bg-the-grand-budapest-hotel.jpg',
+  },
+  {
+    id: 3,
+    name: 'Macbeth',
+    poster: 'img/macbeth.jpg',
+    genre: 'Horror',
+    released: 2016,
+    posterBackGround: 'img/bg-the-grand-budapest-hotel.jpg',
+  },
+  {
+    id: 4,
+    name: 'Aviator',
+    poster: 'img/aviator.jpg',
+    genre: 'Comedy',
+    released: 2017,
+    posterBackGround: 'img/bg-the-grand-budapest-hotel.jpg',
+  },
+  {
+    id: 5,
+    name: 'We need to talk about Kevin',
+    poster: 'img/we-need-to-talk-about-kevin.jpg',
+    genre: 'Cartoon',
+    released: 2018,
+    posterBackGround: 'img/bg-the-grand-budapest-hotel.jpg',
+  },
+  {
+    id: 6,
+    name: 'What We Do in the Shadows',
+    poster: 'img/what-we-do-in-the-shadows.jpg',
+    genre: 'Sci-Fi',
+    released: 2019,
+    posterBackGround: 'img/bg-the-grand-budapest-hotel.jpg',
+  },
+  {
+    id: 7,
+    name: 'Revenant',
+    poster: 'img/revenant.jpg',
+    genre: 'Thriller',
+    released: 2020,
+    posterBackGround: 'img/bg-the-grand-budapest-hotel.jpg',
+  },
+  {
+    id: 8,
+    name: 'Johnny English',
+    poster: 'img/johnny-english.jpg',
+    genre: 'Porno',
+    released: 2021,
+    posterBackGround: 'img/bg-the-grand-budapest-hotel.jpg',
+  },
+];

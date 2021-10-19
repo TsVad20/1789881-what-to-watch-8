@@ -1,19 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
-
-const Settings = {
-  NAME: 'The Grand Budapest Hotel',
-  GENRE: 'Drama',
-  RELEASED: '2014',
-};
+import { authInfo } from './mocks/auth-info';
+import { films } from './mocks/films';
+import { video } from './mocks/video';
 
 ReactDOM.render(
   <React.StrictMode>
     <App
-      name = {Settings.NAME}
-      genre = {Settings.GENRE}
-      released = {Settings.RELEASED}
+      films = {films}
+      video = {video}
+      authInfo = {authInfo}
     />
   </React.StrictMode>,
   document.getElementById('root'));

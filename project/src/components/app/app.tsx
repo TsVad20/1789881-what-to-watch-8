@@ -1,54 +1,53 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute } from '../../const';
 import MainPage from '../main-page/main-page';
 import SignIn from '../sign-in/sign-in';
-import MoviePage from '../movie-page/movie-page';
+import MoviePageOverview from '../movie-page-overview/movie-page-overview';
 import Player from '../player/player';
 import MyList from '../my-list/my-list';
 import AddReview from '../add-review/add-review';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
-import PrivateRoute from '../private-route/private-route';
+import { Film } from '../../types/film';
+import { Video } from '../../types/video';
+import { AuthInfo } from '../../types/auth-info';
 
 type AppProps = {
-  name: string,
-  genre: string,
-  released: string,
+  films: Film[]
+  video: Video
+  authInfo: AuthInfo
 }
 
-function App({ name, genre, released }: AppProps): JSX.Element {
+function App({ films, video, authInfo }: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.Main}>
           <MainPage
-            name={name}
-            genre={genre}
-            released={released}
+            films = {films}
+            authInfo = {authInfo}
           />
         </Route>
         <Route exact path={AppRoute.SignIn}>
           <SignIn />
         </Route>
         <Route exact path={AppRoute.Film}>
-          <MoviePage />
+          <MoviePageOverview />
         </Route>
         <Route exact path={AppRoute.Player}>
-          <Player />
+          <Player
+            video={video}
+          />
         </Route>
-        <PrivateRoute
-          exact
-          path={AppRoute.MyList}
-          render={() => <MyList />}
-          authorizationStatus={AuthorizationStatus.NoAuth}
-        >
-        </PrivateRoute>
-        <PrivateRoute
-          exact
-          path={AppRoute.AddReview}
-          render={() => <AddReview />}
-          authorizationStatus={AuthorizationStatus.NoAuth}
-        >
-        </PrivateRoute>
+        <Route exact path={AppRoute.AddReview}>
+          <AddReview
+            films={films}
+          />
+        </Route>
+        <Route exact path={AppRoute.MyList}>
+          <MyList
+            films={films}
+          />
+        </Route>
         <Route>
           <NotFoundScreen />
         </Route>

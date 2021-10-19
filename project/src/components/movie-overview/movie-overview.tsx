@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import Logo from '../logo/logo';
 
 function MovieOverview(): JSX.Element {
@@ -46,7 +48,7 @@ function MovieOverview(): JSX.Element {
                 </svg>
                 <span>My list</span>
               </button>
-              <a href="add-review.html" className="btn film-card__button">Add review</a>
+              <Link to={AppRoute.AddReview} className="btn film-card__button">Add review</Link>
             </div>
           </div>
         </div>
@@ -62,7 +64,7 @@ function MovieOverview(): JSX.Element {
             <nav className="film-nav film-card__nav">
               <ul className="film-nav__list">
                 <li className="film-nav__item film-nav__item--active">
-                  <a href="#" className="film-nav__link">Overview</a>
+                  <Link to={AppRoute.Film} className="film-nav__link">Overview</Link>
                 </li>
                 <li className="film-nav__item">
                   <a href="#" className="film-nav__link">Details</a>

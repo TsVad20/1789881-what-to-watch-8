@@ -1,22 +1,24 @@
 import MovieCardPromo from '../movie-card-promo/movie-card-promo';
 import React from 'react';
 import MainPageContent from '../main-page-content/main-page-content';
+import { Film } from '../../types/film';
+import { AuthInfo } from '../../types/auth-info';
 
 type MainPageProps = {
-  name: string,
-  genre: string,
-  released: string,
+  films: Film[]
+  authInfo: AuthInfo
 }
 
-function MainPage({name, genre, released}: MainPageProps): JSX.Element {
+function MainPage({films, authInfo}: MainPageProps): JSX.Element {
   return (
     <React.Fragment>
       <MovieCardPromo
-        name={name}
-        genre={genre}
-        released={released}
+        films={films}
+        authInfo = {authInfo}
       />
-      <MainPageContent />
+      <MainPageContent
+        films = {films}
+      />
     </React.Fragment>
   );
 }

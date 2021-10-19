@@ -1,8 +1,14 @@
-function Player(): JSX.Element {
+import { Video } from '../../types/video';
+
+type PlayerProps = {
+  video: Video
+}
+
+function Player({video}:PlayerProps): JSX.Element {
 
   return (
     <div className="player">
-      <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+      <video src={video.videoLink} className="player__video" poster={video.videoPoster}></video>
 
       <button type="button" className="player__exit">Exit</button>
 
@@ -12,7 +18,7 @@ function Player(): JSX.Element {
             <progress className="player__progress" value="30" max="100"></progress>
             <div className="player__toggler" style={{left: '30%'}}>Toggler</div>
           </div>
-          <div className="player__time-value">1:30:29</div>
+          <div className="player__time-value">{video.videoRuntime}</div>
         </div>
 
         <div className="player__controls-row">
