@@ -1,13 +1,15 @@
 import { Film } from '../../types/film';
+import { Video } from '../../types/video';
 import FilmsList from '../films-list/films-list';
 import Logo from '../logo/logo';
 
 
 type MyListProps = {
   films: Film[];
+  video: Video;
 };
 
-function MyList({films}:MyListProps): JSX.Element {
+function MyList({films, video}:MyListProps): JSX.Element {
 
   return (
     <div className="user-page">
@@ -32,7 +34,8 @@ function MyList({films}:MyListProps): JSX.Element {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <FilmsList
-          films={films}
+          films = {films}
+          video = {video}
         />
       </section>
 

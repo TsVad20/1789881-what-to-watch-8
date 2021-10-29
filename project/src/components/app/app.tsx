@@ -3,7 +3,7 @@ import { AppRoute } from '../../const';
 import MainPage from '../main-page/main-page';
 import SignIn from '../sign-in/sign-in';
 import MoviePageOverview from '../movie-page-overview/movie-page-overview';
-import Player from '../player/player';
+import VideoPlayer from '../video-player/video-player';
 import MyList from '../my-list/my-list';
 import AddReview from '../add-review/add-review';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
@@ -25,6 +25,7 @@ function App({ films, video, authInfo }: AppProps): JSX.Element {
           <MainPage
             films = {films}
             authInfo = {authInfo}
+            video = {video}
           />
         </Route>
         <Route exact path={AppRoute.SignIn}>
@@ -34,7 +35,7 @@ function App({ films, video, authInfo }: AppProps): JSX.Element {
           <MoviePageOverview />
         </Route>
         <Route exact path={AppRoute.Player}>
-          <Player
+          <VideoPlayer
             video={video}
           />
         </Route>
@@ -46,6 +47,7 @@ function App({ films, video, authInfo }: AppProps): JSX.Element {
         <Route exact path={AppRoute.MyList}>
           <MyList
             films={films}
+            video={video}
           />
         </Route>
         <Route>
