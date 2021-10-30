@@ -10,7 +10,7 @@ type FilmsListProps = {
 
 function FilmsList({ films, video }: FilmsListProps): JSX.Element {
 
-  const [, setHoveredFilmId] = useState(0);
+  const [hoveredFilmId, setHoveredFilmId] = useState(0);
 
   const handleHoverFilm = (id: number) => {
     setHoveredFilmId(id);
@@ -18,7 +18,7 @@ function FilmsList({ films, video }: FilmsListProps): JSX.Element {
 
   return (
     <div className="catalog__films-list">
-      {films.map((film) => <MovieCardSmall key={film.id} film={film} onMouseOver = {handleHoverFilm} video={video}/>)}
+      {films.map((film) => <MovieCardSmall key={film.id} film={film} onMouseOver={handleHoverFilm} video={video} activeFilm={hoveredFilmId}/>)}
     </div>
   );
 }

@@ -1,45 +1,44 @@
-import { Video } from '../../types/video';
+import { useEffect, useRef, useState } from 'react';
 
 
 type VideoPlayerProps = {
-  video: Video
+  src: string
+  autoPlay: boolean
+  activeFilm: number
 }
 
-function VideoPlayer({video}:VideoPlayerProps): JSX.Element {
+function VideoPlayer(props: VideoPlayerProps): JSX.Element {
+
+  const {src, autoPlay, activeFilm} = props;
+  const [, setIsLoading] = useState(true);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    if (videoRef.current !== null) {
+      videoRef.current.muted = true;
+      videoRef.current.onloadeddata = () => setIsLoading(false);
+    }
+
+    return () => {
+      if (videoRef.current !== null) {
+        videoRef.current.onloadeddata = null;
+        videoRef.current = null;
+      }
+    };
+  }, [activeFilm]);
+
+  useEffect(() => {
+    if (videoRef.current === null) {
+      return;
+    }
+
+    if (autoPlay) {
+      videoRef.current.play();
+    }
+  });
 
   return (
-    <div className="player">
-      <video src={video.videoLink} className="player__video" poster={video.videoPoster}muted></video>
-
-      <button type="button" className="player__exit">Exit</button>
-
-      <div className="player__controls">
-        <div className="player__controls-row">
-          <div className="player__time">
-            <progress className="player__progress" value="30" max="100"></progress>
-            <div className="player__toggler" style={{left: '30%'}}>Toggler</div>
-          </div>
-          <div className="player__time-value">{video.videoRuntime}</div>
-        </div>
-
-        <div className="player__controls-row">
-          <button type="button" className="player__play">
-            <svg viewBox="0 0 19 19" width="19" height="19">
-              <use xlinkHref="#play-s"></use>
-            </svg>
-            <span>Play</span>
-          </button>
-          <div className="player__name">Transpotting</div>
-
-          <button type="button" className="player__full-screen">
-            <svg viewBox="0 0 27 27" width="27" height="27">
-              <use xlinkHref="#full-screen"></use>
-            </svg>
-            <span>Full screen</span>
-          </button>
-        </div>
-      </div>
-    </div>
+    <video src={src} ref={videoRef}></video>
   );
 }
 

@@ -3,7 +3,7 @@ import { AppRoute } from '../../const';
 import MainPage from '../main-page/main-page';
 import SignIn from '../sign-in/sign-in';
 import MoviePageOverview from '../movie-page-overview/movie-page-overview';
-import VideoPlayer from '../video-player/video-player';
+import Player from '../player/player';
 import MyList from '../my-list/my-list';
 import AddReview from '../add-review/add-review';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
@@ -35,7 +35,7 @@ function App({ films, video, authInfo }: AppProps): JSX.Element {
           <MoviePageOverview />
         </Route>
         <Route exact path={AppRoute.Player}>
-          <VideoPlayer
+          <Player
             video={video}
           />
         </Route>
