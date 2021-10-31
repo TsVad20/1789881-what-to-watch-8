@@ -25,6 +25,7 @@ function App({ films, video, authInfo }: AppProps): JSX.Element {
           <MainPage
             films = {films}
             authInfo = {authInfo}
+            video = {video}
           />
         </Route>
         <Route exact path={AppRoute.SignIn}>
@@ -46,6 +47,7 @@ function App({ films, video, authInfo }: AppProps): JSX.Element {
         <Route exact path={AppRoute.MyList}>
           <MyList
             films={films}
+            video={video}
           />
         </Route>
         <Route>

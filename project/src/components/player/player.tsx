@@ -1,4 +1,6 @@
 import { Video } from '../../types/video';
+//import VideoPlayer from '../video-player/video-player';
+
 
 type PlayerProps = {
   video: Video
@@ -8,7 +10,6 @@ function Player({video}:PlayerProps): JSX.Element {
 
   return (
     <div className="player">
-      <video src={video.videoLink} className="player__video" poster={video.videoPoster}></video>
 
       <button type="button" className="player__exit">Exit</button>
 
