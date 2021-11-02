@@ -8,16 +8,14 @@ import MyList from '../my-list/my-list';
 import AddReview from '../add-review/add-review';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import { Film } from '../../types/film';
-import { Video } from '../../types/video';
 import { AuthInfo } from '../../types/auth-info';
 
 type AppProps = {
   films: Film[]
-  video: Video
   authInfo: AuthInfo
 }
 
-function App({ films, video, authInfo }: AppProps): JSX.Element {
+function App({ films, authInfo }: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
@@ -25,7 +23,6 @@ function App({ films, video, authInfo }: AppProps): JSX.Element {
           <MainPage
             films = {films}
             authInfo = {authInfo}
-            video = {video}
           />
         </Route>
         <Route exact path={AppRoute.SignIn}>
@@ -36,7 +33,7 @@ function App({ films, video, authInfo }: AppProps): JSX.Element {
         </Route>
         <Route exact path={AppRoute.Player}>
           <Player
-            video={video}
+            films ={films}
           />
         </Route>
         <Route exact path={AppRoute.AddReview}>
@@ -47,7 +44,6 @@ function App({ films, video, authInfo }: AppProps): JSX.Element {
         <Route exact path={AppRoute.MyList}>
           <MyList
             films={films}
-            video={video}
           />
         </Route>
         <Route>

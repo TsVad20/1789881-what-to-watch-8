@@ -47,7 +47,7 @@ function AddReview({films}: AddReviewProps): JSX.Element {
         </header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src={promoFilm.poster} alt={promoFilm.name} width="218" height="327" />
+          <img src={promoFilm.posterImage} alt={promoFilm.name} width="218" height="327" />
         </div>
       </div>
       <AddReviewForm />

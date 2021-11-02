@@ -1,14 +1,12 @@
 import { Film } from '../../types/film';
-import { Video } from '../../types/video';
 import FilmsList from '../films-list/films-list';
-import Logo from '../logo/logo';
+import Footer from '../footer/footer';
 
 type MainPageContentProps = {
   films: Film[];
-  video: Video;
 };
 
-function MainPageContent({ films, video }: MainPageContentProps): JSX.Element {
+function MainPageContent({ films }: MainPageContentProps): JSX.Element {
 
   return (
     <div className="page-content">
@@ -50,7 +48,6 @@ function MainPageContent({ films, video }: MainPageContentProps): JSX.Element {
 
         <FilmsList
           films = {films}
-          video = {video}
         />
 
         <div className="catalog__more">
@@ -59,7 +56,7 @@ function MainPageContent({ films, video }: MainPageContentProps): JSX.Element {
       </section>
 
       <footer className="page-footer">
-        <Logo />
+        <Footer />
         <div className="copyright">
           <p>© 2019 What to watch Ltd.</p>
         </div>
