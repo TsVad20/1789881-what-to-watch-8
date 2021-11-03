@@ -42,9 +42,9 @@ function MovieCardSmall({film, onMouseOver, activeFilm}:MovieCardSmallProps) :JS
     >
       <div className="small-film-card__image">
         {isPoster ?
-          `${<img src={film.posterImage} alt={film.name} width="280" height="175"/>}`
+          <img src={film.posterImage} alt={film.name} width="280" height="175"/>
           :
-          `${<VideoPlayer autoPlay={film.id === activeFilm} src={film.previewVideoLink} activeFilm={film.id} />}`}
+          <VideoPlayer autoPlay={film.id === activeFilm} src={film.previewVideoLink} activeFilm={film.id} />}
       </div>
       <h3 className="small-film-card__title">
         <Link className="small-film-card__link" to={AppRoute.Film}>{film.name}

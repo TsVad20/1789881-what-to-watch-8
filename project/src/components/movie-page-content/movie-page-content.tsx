@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import Logo from '../logo/logo';
+import Footer from '../footer/footer';
 
 function MoviePageContent(): JSX.Element {
 
@@ -50,7 +50,7 @@ function MoviePageContent(): JSX.Element {
         </div>
       </section>
       <footer className="page-footer">
-        <Logo />
+        <Footer />
         <div className="copyright">
           <p>© 2019 What to watch Ltd.</p>
         </div>
