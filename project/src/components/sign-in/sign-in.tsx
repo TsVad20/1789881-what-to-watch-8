@@ -1,3 +1,4 @@
+import Footer from '../footer/footer';
 import Logo from '../logo/logo';
 
 function SignIn(): JSX.Element {
@@ -29,7 +30,7 @@ function SignIn(): JSX.Element {
       </div>
 
       <footer className="page-footer">
-        <Logo />
+        <Footer />
         <div className="copyright">
           <p>© 2019 What to watch Ltd.</p>
         </div>

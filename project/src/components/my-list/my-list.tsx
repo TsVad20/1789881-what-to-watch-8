@@ -1,15 +1,14 @@
 import { Film } from '../../types/film';
-import { Video } from '../../types/video';
 import FilmsList from '../films-list/films-list';
+import Footer from '../footer/footer';
 import Logo from '../logo/logo';
 
 
 type MyListProps = {
   films: Film[];
-  video: Video;
 };
 
-function MyList({films, video}:MyListProps): JSX.Element {
+function MyList({films}:MyListProps): JSX.Element {
 
   return (
     <div className="user-page">
@@ -35,12 +34,11 @@ function MyList({films, video}:MyListProps): JSX.Element {
 
         <FilmsList
           films = {films}
-          video = {video}
         />
       </section>
 
       <footer className="page-footer">
-        <Logo />
+        <Footer />
         <div className="copyright">
           <p>© 2019 What to watch Ltd.</p>
         </div>
