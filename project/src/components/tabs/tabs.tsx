@@ -6,11 +6,11 @@ import MovieOverview from '../movie-overview/movie-overview';
 import MovieReviews from '../movie-reviews/movie-reviews';
 
 type TabsProps = {
-  films: Film[]
+  film: Film
   comments: Comment[]
 }
 
-function Tabs({films, comments}: TabsProps): JSX.Element {
+function Tabs({film, comments}: TabsProps): JSX.Element {
 
   const [activeTab, setActiveTab] = useState('Overview');
 
@@ -22,9 +22,9 @@ function Tabs({films, comments}: TabsProps): JSX.Element {
   const renderActiveTab = (tab: string) => {
     switch (tab) {
       case 'Overview':
-        return <MovieOverview films = {films} />;
+        return <MovieOverview film = {film} />;
       case 'Details':
-        return <MovieDetails films = {films} />;
+        return <MovieDetails film = {film} />;
       case 'Reviews':
         return <MovieReviews comments = {comments} />;
     }

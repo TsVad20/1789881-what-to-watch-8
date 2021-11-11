@@ -4,6 +4,7 @@ import MoviePageContent from '../movie-page-content/movie-page-content';
 import { Film } from '../../types/film';
 import { Comment } from '../../types/comment';
 import Tabs from '../tabs/tabs';
+import { useParams } from 'react-router';
 
 type MoviePageProps = {
   films: Film[]
@@ -11,6 +12,11 @@ type MoviePageProps = {
 }
 
 function MoviePage({films, comments} : MoviePageProps): JSX.Element {
+
+  const { id }: {id: string} = useParams();
+
+  const currentFilm = films.find((film) => film.id === Number(id));
+
   return (
     <React.Fragment>
       <section className="film-card film-card--full">
@@ -69,7 +75,7 @@ function MoviePage({films, comments} : MoviePageProps): JSX.Element {
               <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
             </div>
             <Tabs
-              films = {films}
+              film = {currentFilm as Film}
               comments = {comments}
             />
           </div>
