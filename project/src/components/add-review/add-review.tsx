@@ -15,7 +15,7 @@ function AddReview({films}: AddReviewProps): JSX.Element {
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src={promoFilm.posterBackGround} alt={promoFilm.name} />
+          <img src={promoFilm.posterImage} alt={promoFilm.name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>

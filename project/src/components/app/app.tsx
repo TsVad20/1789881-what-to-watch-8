@@ -2,20 +2,22 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import MainPage from '../main-page/main-page';
 import SignIn from '../sign-in/sign-in';
-import MoviePageOverview from '../movie-page-overview/movie-page-overview';
+import MoviePage from '../movie-page/movie-page';
 import Player from '../player/player';
 import MyList from '../my-list/my-list';
 import AddReview from '../add-review/add-review';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import { Film } from '../../types/film';
 import { AuthInfo } from '../../types/auth-info';
+import { Comment } from '../../types/comment';
 
 type AppProps = {
   films: Film[]
   authInfo: AuthInfo
+  comments: Comment[]
 }
 
-function App({ films, authInfo }: AppProps): JSX.Element {
+function App({ films, authInfo, comments }: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
@@ -29,7 +31,10 @@ function App({ films, authInfo }: AppProps): JSX.Element {
           <SignIn />
         </Route>
         <Route exact path={AppRoute.Film}>
-          <MoviePageOverview />
+          <MoviePage
+            films = {films}
+            comments = {comments}
+          />
         </Route>
         <Route exact path={AppRoute.Player}>
           <Player
