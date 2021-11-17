@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { Film } from '../../types/film';
 import { State } from '../../types/state';
 import FilmsList from '../films-list/films-list';
 import Footer from '../footer/footer';
 import GenreList from '../genre-list/genre-list';
+import ShowMore from '../show-more-button/show-more-button';
 
 type MainPageContentProps = {
   films: Film[];
@@ -21,6 +23,14 @@ type ConnectedMainPageProps = PropsFromRedux & MainPageContentProps;
 
 function MainPageContent({ films, filteredFilms }: ConnectedMainPageProps): JSX.Element {
 
+  const SHOW_MORE_BUTTON_STEP = 8;
+  const [shownFilms, setShownFilms] = useState(SHOW_MORE_BUTTON_STEP);
+  const renderedfilms = filteredFilms.slice(0, shownFilms);
+
+  const handleShowMoreButtonClick = () => {
+    setShownFilms(() => shownFilms + SHOW_MORE_BUTTON_STEP);
+  };
+
   return (
     <div className="page-content">
       <section className="catalog">
@@ -29,12 +39,13 @@ function MainPageContent({ films, filteredFilms }: ConnectedMainPageProps): JSX.
         <GenreList films = {films}/>
 
         <FilmsList
-          films = {filteredFilms}
+          films = {renderedfilms}
         />
 
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
+        {
+          filteredFilms.length > renderedfilms.length &&
+          <ShowMore onClick={handleShowMoreButtonClick}/>
+        }
       </section>
 
       <footer className="page-footer">
