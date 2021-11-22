@@ -12,7 +12,7 @@ function MovieCardPromo({films, authInfo}: MovieCardPromoProps): JSX.Element{
   return (
     <section className="film-card">
       <div className="film-card__bg">
-        <img src="img/bg-the-grand-budapest-hotel.jpg" alt={promoFilm.name} />
+        <img src={promoFilm.backgroundImage} alt={promoFilm.name} />
       </div>
       <h1 className="visually-hidden">WTW</h1>
 

@@ -16,3 +16,7 @@ export enum AuthorizationStatus {
 export enum Genres {
   All = 'All genres',
 }
+
+export enum APIRoute {
+  Films = '/films',
+}
