@@ -9,11 +9,11 @@ import ShowMore from '../show-more-button/show-more-button';
 
 type MainPageContentProps = {
   films: Film[];
-  filteredFilms: Film[];
+  filmList: Film[];
 };
 
-const mapStateToProps = ({filteredFilms}: State) => ({
-  filteredFilms,
+const mapStateToProps = ({filmList}: State) => ({
+  filmList,
 });
 
 const connector = connect(mapStateToProps);
@@ -21,7 +21,7 @@ const connector = connect(mapStateToProps);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 type ConnectedMainPageProps = PropsFromRedux & MainPageContentProps;
 
-function MainPageContent({ films, filteredFilms }: ConnectedMainPageProps): JSX.Element {
+function MainPageContent({ films, filmList: filteredFilms }: ConnectedMainPageProps): JSX.Element {
 
   const SHOW_MORE_BUTTON_STEP = 8;
   const [shownFilms, setShownFilms] = useState(SHOW_MORE_BUTTON_STEP);
