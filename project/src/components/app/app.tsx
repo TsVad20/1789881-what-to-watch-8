@@ -12,10 +12,9 @@ import { connect, ConnectedProps } from 'react-redux';
 import PrivateRoute from '../private-route/private-route';
 import Loading from '../loading/loading';
 import { comments } from '../../mocks/comments';
-import { authInfo } from '../../mocks/auth-info';
 
-const mapStateToProps = ({filmList, isDataLoaded}: State) => ({
-  films: filmList,
+const mapStateToProps = ({filmsList, isDataLoaded}: State) => ({
+  filmsList,
   isDataLoaded,
 });
 
@@ -23,7 +22,7 @@ const connector = connect(mapStateToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-function App({ films, isDataLoaded }: PropsFromRedux): JSX.Element {
+function App({ filmsList, isDataLoaded }: PropsFromRedux): JSX.Element {
   if (!isDataLoaded) {
     return (
       <Loading />
@@ -33,10 +32,7 @@ function App({ films, isDataLoaded }: PropsFromRedux): JSX.Element {
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.Main}>
-          <MainPage
-            films = {films}
-            authInfo = {authInfo}
-          />
+          <MainPage />
         </Route>
         <Route exact path={AppRoute.SignIn}>
           <SignIn />
@@ -44,29 +40,29 @@ function App({ films, isDataLoaded }: PropsFromRedux): JSX.Element {
         <PrivateRoute
           exact
           path={AppRoute.MyList}
-          render={() => <MyList films={films} />}
+          render={() => <MyList films={filmsList} />}
           authorizationStatus={AuthorizationStatus.Auth}
         >
         </PrivateRoute>
         <Route exact path={AppRoute.Film}>
           <MoviePage
-            films = {films}
+            films = {filmsList}
             comments = {comments}
           />
         </Route>
         <Route exact path={AppRoute.Player}>
           <Player
-            films ={films}
+            films ={filmsList}
           />
         </Route>
         <Route exact path={AppRoute.AddReview}>
           <AddReview
-            films={films}
+            films={filmsList}
           />
         </Route>
         <Route exact path={AppRoute.MyList}>
           <MyList
-            films={films}
+            films={filmsList}
           />
         </Route>
         <Route>

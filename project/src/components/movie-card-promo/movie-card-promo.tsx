@@ -1,14 +1,19 @@
-import { AuthInfo } from '../../types/auth-info';
-import { Film } from '../../types/film';
+import { connect, ConnectedProps } from 'react-redux';
+import { State } from '../../types/state';
 import Logo from '../logo/logo';
 
-type MovieCardPromoProps = {
-  films: Film[]
-  authInfo: AuthInfo
-}
+const mapStateToProps = ({filteredFilms}: State) => ({
+  filteredFilms,
+});
 
-function MovieCardPromo({films, authInfo}: MovieCardPromoProps): JSX.Element{
-  const [promoFilm] = films;
+const connector = connect(mapStateToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+
+function MovieCardPromo({filteredFilms}: PropsFromRedux): JSX.Element{
+  const promoFilm = filteredFilms[0];
+
   return (
     <section className="film-card">
       <div className="film-card__bg">
@@ -22,7 +27,7 @@ function MovieCardPromo({films, authInfo}: MovieCardPromoProps): JSX.Element{
         <ul className="user-block">
           <li className="user-block__item">
             <div className="user-block__avatar">
-              <img src={authInfo.avatarUrl} alt={authInfo.name} width="63" height="63" />
+              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
             </div>
           </li>
           <li className="user-block__item">
@@ -64,4 +69,4 @@ function MovieCardPromo({films, authInfo}: MovieCardPromoProps): JSX.Element{
   );
 }
 
-export default MovieCardPromo;
+export default connector(MovieCardPromo);

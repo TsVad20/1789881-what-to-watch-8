@@ -2,6 +2,7 @@ import { Film } from './film';
 
 export type State = {
   currentGenre: string,
-  filmList: Film[],
+  filmsList: Film[],
+  filteredFilms: Film[],
   isDataLoaded: boolean,
 };

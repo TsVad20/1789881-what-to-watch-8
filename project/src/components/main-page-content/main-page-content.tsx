@@ -1,27 +1,22 @@
 import { useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { Film } from '../../types/film';
 import { State } from '../../types/state';
 import FilmsList from '../films-list/films-list';
 import Footer from '../footer/footer';
 import GenreList from '../genre-list/genre-list';
 import ShowMore from '../show-more-button/show-more-button';
 
-type MainPageContentProps = {
-  films: Film[];
-  filmList: Film[];
-};
-
-const mapStateToProps = ({filmList}: State) => ({
-  filmList,
+const mapStateToProps = ({filmsList, filteredFilms}: State) => ({
+  filmsList,
+  filteredFilms,
 });
 
 const connector = connect(mapStateToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
-type ConnectedMainPageProps = PropsFromRedux & MainPageContentProps;
 
-function MainPageContent({ films, filmList: filteredFilms }: ConnectedMainPageProps): JSX.Element {
+
+function MainPageContent({ filmsList, filteredFilms }: PropsFromRedux): JSX.Element {
 
   const SHOW_MORE_BUTTON_STEP = 8;
   const [shownFilms, setShownFilms] = useState(SHOW_MORE_BUTTON_STEP);
@@ -36,7 +31,7 @@ function MainPageContent({ films, filmList: filteredFilms }: ConnectedMainPagePr
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <GenreList films = {films}/>
+        <GenreList films = {filmsList}/>
 
         <FilmsList
           films = {renderedfilms}
