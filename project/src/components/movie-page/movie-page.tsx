@@ -4,18 +4,48 @@ import MoviePageContent from '../movie-page-content/movie-page-content';
 import { Film } from '../../types/film';
 import { Comment } from '../../types/comment';
 import Tabs from '../tabs/tabs';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
+import { Link } from 'react-router-dom';
+import { State } from '../../types/state';
+import { ThunkAppDispatch } from '../../types/action';
+import { fetchFilmAction } from '../../store/api-actions';
+import { connect, ConnectedProps } from 'react-redux';
+import Loading from '../loading/loading';
+import { AppRoute } from '../../const';
 
 type MoviePageProps = {
   films: Film[]
   comments: Comment[]
 }
 
-function MoviePage({films, comments} : MoviePageProps): JSX.Element {
+const mapStateToProps = ({currentFilm}: State) => ({
+  currentFilm,
+});
+
+const mapDispatchToProps = (dispatch: ThunkAppDispatch) => ({
+  getCurrentFilm(id: number) {
+    dispatch(fetchFilmAction(id));
+  },
+});
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type ConnectedFilmProps = PropsFromRedux & MoviePageProps;
+
+function MoviePage({films, comments, currentFilm, getCurrentFilm} : ConnectedFilmProps): JSX.Element {
+
+  const history = useHistory();
 
   const { id }: {id: string} = useParams();
+  const filmId = Number(id);
 
-  const currentFilm = films.find((film) => film.id === Number(id));
+  if (currentFilm?.id !== filmId) {
+    getCurrentFilm(filmId);
+    return (
+      <Loading />
+    );
+  }
 
   return (
     <React.Fragment>
@@ -37,7 +67,7 @@ function MoviePage({films, comments} : MoviePageProps): JSX.Element {
                 </div>
               </li>
               <li className="user-block__item">
-                <a className="user-block__link">Sign out</a>
+                <Link to="#" className="user-block__link">Sign out</Link>
               </li>
             </ul>
           </header>
@@ -51,7 +81,7 @@ function MoviePage({films, comments} : MoviePageProps): JSX.Element {
               </p>
 
               <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
+                <button className="btn btn--play film-card__button" type="button" onClick={() => history.push(AppRoute.Player.replace(':id', `${filmId}`))}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -63,7 +93,7 @@ function MoviePage({films, comments} : MoviePageProps): JSX.Element {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn film-card__button">Add review</a>
+                <Link className="btn film-card__button" to={AppRoute.AddReview.replace(':id', `${filmId}`)}>Add review</Link>
               </div>
             </div>
           </div>
@@ -75,6 +105,7 @@ function MoviePage({films, comments} : MoviePageProps): JSX.Element {
               <img src={currentFilm?.backgroundImage} alt={currentFilm?.posterImage} width="218" height="327" />
             </div>
             <Tabs
+              //id={filmId}
               film = {currentFilm as Film}
               comments = {comments}
             />
@@ -86,4 +117,4 @@ function MoviePage({films, comments} : MoviePageProps): JSX.Element {
   );
 }
 
-export default MoviePage;
+export default connector(MoviePage);

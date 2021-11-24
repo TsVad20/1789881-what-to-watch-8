@@ -1,9 +1,12 @@
 import { connect, ConnectedProps } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { AppRoute, AuthorizationStatus } from '../../const';
 import { State } from '../../types/state';
 import Logo from '../logo/logo';
 
-const mapStateToProps = ({filteredFilms}: State) => ({
+const mapStateToProps = ({filteredFilms, authorizationStatus}: State) => ({
   filteredFilms,
+  authorizationStatus,
 });
 
 const connector = connect(mapStateToProps);
@@ -11,7 +14,7 @@ const connector = connect(mapStateToProps);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
 
-function MovieCardPromo({filteredFilms}: PropsFromRedux): JSX.Element{
+function MovieCardPromo({filteredFilms, authorizationStatus}: PropsFromRedux): JSX.Element{
   const promoFilm = filteredFilms[0];
 
   return (
@@ -25,14 +28,32 @@ function MovieCardPromo({filteredFilms}: PropsFromRedux): JSX.Element{
         <Logo />
 
         <ul className="user-block">
-          <li className="user-block__item">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </li>
-          <li className="user-block__item">
-            <a href="#" className="user-block__link">Sign out</a>
-          </li>
+          {
+            authorizationStatus === AuthorizationStatus.Auth ?
+              (
+                <>
+                  <li className="user-block__item">
+                    <div className="user-block__avatar">
+                      <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                    </div>
+                  </li>
+                  <li className="user-block__item">
+                    <Link className="user-block__link" to="#">Vasya</Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="user-block__item">
+                    <div className="user-block__avatar">
+                      <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                    </div>
+                  </li>
+                  <li className="user-block__item">
+                    <Link className="user-block__link" to={AppRoute.SignIn}>Sign in</Link>
+                  </li>
+                </>
+              )
+          }
         </ul>
       </header>
       <div className="film-card__wrap">

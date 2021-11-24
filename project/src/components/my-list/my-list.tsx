@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import { Film } from '../../types/film';
 import FilmsList from '../films-list/films-list';
 import Footer from '../footer/footer';
@@ -24,7 +26,7 @@ function MyList({films}:MyListProps): JSX.Element {
             </div>
           </li>
           <li className="user-block__item">
-            <a href="#" className="user-block__link">Sign out</a>
+            <Link to={AppRoute.Main} className="user-block__link">Sign out</Link>
           </li>
         </ul>
       </header>

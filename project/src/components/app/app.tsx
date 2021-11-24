@@ -13,17 +13,18 @@ import PrivateRoute from '../private-route/private-route';
 import Loading from '../loading/loading';
 import { comments } from '../../mocks/comments';
 
-const mapStateToProps = ({filmsList, isDataLoaded}: State) => ({
+const mapStateToProps = ({filmsList, isDataLoaded, authorizationStatus}: State) => ({
   filmsList,
   isDataLoaded,
+  authorizationStatus,
 });
 
 const connector = connect(mapStateToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-function App({ filmsList, isDataLoaded }: PropsFromRedux): JSX.Element {
-  if (!isDataLoaded) {
+function App({ filmsList, isDataLoaded, authorizationStatus }: PropsFromRedux): JSX.Element {
+  if (authorizationStatus === AuthorizationStatus.Unknown ||!isDataLoaded) {
     return (
       <Loading />
     );
@@ -41,7 +42,6 @@ function App({ filmsList, isDataLoaded }: PropsFromRedux): JSX.Element {
           exact
           path={AppRoute.MyList}
           render={() => <MyList films={filmsList} />}
-          authorizationStatus={AuthorizationStatus.Auth}
         >
         </PrivateRoute>
         <Route exact path={AppRoute.Film}>

@@ -4,6 +4,7 @@ import { Comment } from '../../types/comment';
 import MovieDetails from '../movie-details/movie-details';
 import MovieOverview from '../movie-overview/movie-overview';
 import MovieReviews from '../movie-reviews/movie-reviews';
+import { Link } from 'react-router-dom';
 
 type TabsProps = {
   film: Film
@@ -34,13 +35,13 @@ function Tabs({film, comments}: TabsProps): JSX.Element {
       <nav className="film-nav film-card__nav">
         <ul className="film-nav__list">
           <li className={`film-nav__item ${activeTab === 'Overview' ? 'film-nav__item--active' : ''}`}>
-            <a href="#" className="film-nav__link" onClick={handleTab}>Overview</a>
+            <Link to="#" className="film-nav__link" onClick={handleTab}>Overview</Link>
           </li>
           <li className={`film-nav__item ${activeTab === 'Details' ? 'film-nav__item--active' : ''}`}>
-            <a href="#" className="film-nav__link" onClick={handleTab}>Details</a>
+            <Link to="#" className="film-nav__link" onClick={handleTab}>Details</Link>
           </li>
           <li className={`film-nav__item ${activeTab === 'Reviews' ? 'film-nav__item--active' : ''}`}>
-            <a href="#" className="film-nav__link" onClick={handleTab}>Reviews</a>
+            <Link to="#" className="film-nav__link" onClick={handleTab}>Reviews</Link>
           </li>
         </ul>
       </nav>
