@@ -1,5 +1,5 @@
-import { filterFilmsByGenre, adaptFilmsToClient } from '../utils';
-import { Genres } from '../const';
+import { filterFilmsByGenre, adaptFilmsToClient, adaptToClient } from '../utils';
+import { AuthorizationStatus, Genres } from '../const';
 import {
   Actions,
   ActionType
@@ -8,8 +8,11 @@ import type { State } from '../types/state';
 
 const initialState: State = {
   currentGenre: Genres.All,
-  filmList: [],
+  filmsList: [],
+  filteredFilms: [],
   isDataLoaded: false,
+  authorizationStatus: AuthorizationStatus.Unknown,
+  currentFilm: null,
 };
 
 export const reducer = (state: State = initialState, action: Actions): State => {
@@ -17,9 +20,15 @@ export const reducer = (state: State = initialState, action: Actions): State => 
     case ActionType.ChangeGenre:
       return {...state, currentGenre: action.payload};
     case ActionType.FilterFilms:
-      return {...state, filmList: filterFilmsByGenre(action.payload, state.currentGenre)};
+      return {...state, filteredFilms: filterFilmsByGenre(action.payload, state.currentGenre)};
     case ActionType.LoadFilms:
-      return {...state, filmList: adaptFilmsToClient(action.payload), isDataLoaded: true};
+      return {...state, filmsList: adaptFilmsToClient(action.payload), filteredFilms: adaptFilmsToClient(action.payload), isDataLoaded: true};
+    case ActionType.RequireAuthorization:
+      return {...state, authorizationStatus: action.payload};
+    case ActionType.RequireLogout:
+      return {...state, authorizationStatus: AuthorizationStatus.NoAuth};
+    case ActionType.LoadFilm:
+      return {...state, currentFilm: adaptToClient(action.payload)};
     default:
       return state;
   }

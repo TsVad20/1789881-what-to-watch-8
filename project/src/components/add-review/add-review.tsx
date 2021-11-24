@@ -29,7 +29,7 @@ function AddReview({films}: AddReviewProps): JSX.Element {
                 <Link to={AppRoute.Main} className="breadcrumbs__link">{promoFilm.name}</Link>
               </li>
               <li className="breadcrumbs__item">
-                <a className="breadcrumbs__link">Add review</a>
+                <Link to="#" className="breadcrumbs__link">Add review</Link>
               </li>
             </ul>
           </nav>
@@ -41,7 +41,7 @@ function AddReview({films}: AddReviewProps): JSX.Element {
               </div>
             </li>
             <li className="user-block__item">
-              <a className="user-block__link">Sign out</a>
+              <Link to="#" className="user-block__link">Sign out</Link>
             </li>
           </ul>
         </header>

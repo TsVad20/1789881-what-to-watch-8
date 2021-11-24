@@ -1,3 +1,4 @@
+import { AuthorizationStatus } from '../const';
 import { ActionType } from '../types/action';
 import { Film, FilmFromServer } from '../types/film';
 
@@ -15,4 +16,18 @@ export const filterFilms = (films: Film[]) => ({
 export const loadFilms = (films: FilmFromServer[]) => ({
   type: ActionType.LoadFilms,
   payload: films,
+} as const);
+
+export const requireAuthorization = (authorizationStatus: AuthorizationStatus) => ({
+  type: ActionType.RequireAuthorization,
+  payload: authorizationStatus,
+} as const);
+
+export const requireLogout = () => ({
+  type: ActionType.RequireLogout,
+} as const);
+
+export const loadFilm = (film: FilmFromServer) => ({
+  type: ActionType.LoadFilm,
+  payload: film,
 } as const);
