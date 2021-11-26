@@ -1,5 +1,5 @@
 import { FilmFromServer } from '../types/film';
-import { loadFilm, loadFilms, requireAuthorization, requireLogout } from './action';
+import { loadFilm, loadFilms, loadSimilarFilms, requireAuthorization, requireLogout } from './action';
 import { APIRoute, AuthorizationStatus } from '../const';
 import type { ThunkActionResult } from '../types/action';
 import { dropToken, saveToken, Token } from '../services/token';
@@ -38,4 +38,10 @@ export const fetchFilmAction = (filmId: number): ThunkActionResult =>
   async (dispatch, _getState, api): Promise<void> => {
     const {data} = await api.get<FilmFromServer>(APIRoute.Film.replace(':id', `${filmId}`));
     dispatch(loadFilm(data));
+  };
+
+export const fetchSimilarFilmsAction = (filmId: number): ThunkActionResult =>
+  async (dispatch, _getState, api): Promise<void> => {
+    const {data} = await api.get<FilmFromServer[]>(APIRoute.Similar.replace(':id', `${filmId}`));
+    dispatch(loadSimilarFilms(data));
   };

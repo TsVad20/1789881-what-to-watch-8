@@ -14,7 +14,6 @@ import Loading from '../loading/loading';
 import { AppRoute } from '../../const';
 
 type MoviePageProps = {
-  films: Film[]
   comments: Comment[]
 }
 
@@ -33,7 +32,7 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 type ConnectedFilmProps = PropsFromRedux & MoviePageProps;
 
-function MoviePage({films, comments, currentFilm, getCurrentFilm} : ConnectedFilmProps): JSX.Element {
+function MoviePage({comments, currentFilm, getCurrentFilm} : ConnectedFilmProps): JSX.Element {
 
   const history = useHistory();
 
@@ -112,7 +111,7 @@ function MoviePage({films, comments, currentFilm, getCurrentFilm} : ConnectedFil
           </div>
         </div>
       </section>
-      <MoviePageContent films = {films}/>
+      <MoviePageContent />
     </React.Fragment>
   );
 }

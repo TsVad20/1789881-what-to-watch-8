@@ -8,4 +8,8 @@ export type State = {
   isDataLoaded: boolean,
   authorizationStatus: AuthorizationStatus,
   currentFilm: Film | null,
+  similarFilms: Film[],
+  isSimilarFilmsLoaded: boolean,
+  comments: Film[],
+  isCommentsLoaded: boolean,
 };

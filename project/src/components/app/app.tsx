@@ -46,7 +46,6 @@ function App({ films, isDataLoaded, authorizationStatus }: PropsFromRedux): JSX.
         </PrivateRoute>
         <Route exact path={AppRoute.Film}>
           <MoviePage
-            films = {films}
             comments = {comments}
           />
         </Route>

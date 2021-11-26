@@ -8,6 +8,7 @@ import {
   filterFilms,
   loadFilm,
   loadFilms,
+  loadSimilarFilms,
   requireAuthorization,
   requireLogout
 } from '../store/action';
@@ -20,6 +21,7 @@ export enum ActionType {
   RequireAuthorization = 'user/requireAuthorization',
   RequireLogout = 'user/requireLogout',
   LoadFilm = 'data/loadFilm',
+  LoadSimilarFilms = 'data/loadSimilarFilms',
 }
 
 export type Actions =
@@ -29,6 +31,7 @@ export type Actions =
 | ReturnType<typeof requireAuthorization>
 | ReturnType<typeof requireLogout>
 | ReturnType<typeof loadFilm>
+| ReturnType<typeof loadSimilarFilms>
 
 
 export type ThunkActionResult<R = Promise<void>> = ThunkAction<R, State, AxiosInstance, Actions>;

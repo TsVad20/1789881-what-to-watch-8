@@ -13,6 +13,10 @@ const initialState: State = {
   isDataLoaded: false,
   authorizationStatus: AuthorizationStatus.Unknown,
   currentFilm: null,
+  similarFilms: [],
+  isSimilarFilmsLoaded: false,
+  comments: [],
+  isCommentsLoaded: false,
 };
 
 export const reducer = (state: State = initialState, action: Actions): State => {
@@ -28,7 +32,18 @@ export const reducer = (state: State = initialState, action: Actions): State => 
     case ActionType.RequireLogout:
       return {...state, authorizationStatus: AuthorizationStatus.NoAuth};
     case ActionType.LoadFilm:
-      return {...state, currentFilm: adaptToClient(action.payload)};
+      return {
+        ...state,
+        currentFilm: adaptToClient(action.payload),
+        similarFilms: [],
+        isSimilarFilmsLoaded: false,
+      };
+    case ActionType.LoadSimilarFilms:
+      return {
+        ...state,
+        similarFilms: adaptFilmsToClient(action.payload),
+        isSimilarFilmsLoaded: true,
+      };
     default:
       return state;
   }

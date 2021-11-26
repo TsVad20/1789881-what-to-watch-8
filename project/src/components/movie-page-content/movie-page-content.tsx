@@ -1,16 +1,46 @@
-import { Link } from 'react-router-dom';
+import { connect, ConnectedProps } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+import { fetchFilmAction, fetchSimilarFilmsAction } from '../../store/api-actions';
+import { ThunkAppDispatch } from '../../types/action';
+import { State } from '../../types/state';
 import Footer from '../footer/footer';
-import {Film} from '../../types/film';
+import Loading from '../loading/loading';
 
-type MoviePageContentProps = {
-  films: Film[]
-}
+const mapStateToProps = ({currentFilm, similarFilms, isSimilarFilmsLoaded}: State) => ({
+  currentFilm,
+  similarFilms,
+  isSimilarFilmsLoaded,
+});
 
-function MoviePageContent({films}: MoviePageContentProps): JSX.Element {
+const mapDispatchToProps = (dispatch: ThunkAppDispatch) => ({
+  getCurrentFilm(id: number) {
+    dispatch(fetchFilmAction(id));
+  },
+  getSimilarFilms(id: number) {
+    dispatch(fetchSimilarFilmsAction(id));
+  },
+});
 
-  const currentFilm = films[0];
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
-  const similarFilms = films.filter((film) => film.genre === currentFilm.genre);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+function MoviePageContent({currentFilm, similarFilms, isSimilarFilmsLoaded, getCurrentFilm, getSimilarFilms}: PropsFromRedux): JSX.Element {
+
+  const { id }: {id: string} = useParams();
+  const filmId = Number(id);
+
+  if (currentFilm?.id !== filmId) {
+    getCurrentFilm(filmId);
+
+    return (
+      <Loading />
+    );
+  }
+
+  if (!isSimilarFilmsLoaded) {
+    getSimilarFilms(filmId);
+  }
 
   return (
     <div className="page-content">
@@ -39,4 +69,4 @@ function MoviePageContent({films}: MoviePageContentProps): JSX.Element {
   );
 }
 
-export default MoviePageContent;
+export default connector(MoviePageContent);
