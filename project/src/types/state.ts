@@ -3,7 +3,7 @@ import { Film } from './film';
 
 export type State = {
   currentGenre: string,
-  filmsList: Film[],
+  films: Film[],
   filteredFilms: Film[],
   isDataLoaded: boolean,
   authorizationStatus: AuthorizationStatus,

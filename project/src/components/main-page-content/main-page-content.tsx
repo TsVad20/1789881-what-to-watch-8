@@ -6,8 +6,8 @@ import Footer from '../footer/footer';
 import GenreList from '../genre-list/genre-list';
 import ShowMore from '../show-more-button/show-more-button';
 
-const mapStateToProps = ({filmsList, filteredFilms}: State) => ({
-  filmsList,
+const mapStateToProps = ({films, filteredFilms}: State) => ({
+  films,
   filteredFilms,
 });
 
@@ -16,7 +16,7 @@ const connector = connect(mapStateToProps);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
 
-function MainPageContent({ filmsList, filteredFilms }: PropsFromRedux): JSX.Element {
+function MainPageContent({ films, filteredFilms }: PropsFromRedux): JSX.Element {
 
   const SHOW_MORE_BUTTON_STEP = 8;
   const [shownFilms, setShownFilms] = useState(SHOW_MORE_BUTTON_STEP);
@@ -31,7 +31,7 @@ function MainPageContent({ filmsList, filteredFilms }: PropsFromRedux): JSX.Elem
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <GenreList films = {filmsList}/>
+        <GenreList films = {films}/>
 
         <FilmsList
           films = {renderedfilms}

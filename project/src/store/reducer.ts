@@ -8,7 +8,7 @@ import type { State } from '../types/state';
 
 const initialState: State = {
   currentGenre: Genres.All,
-  filmsList: [],
+  films: [],
   filteredFilms: [],
   isDataLoaded: false,
   authorizationStatus: AuthorizationStatus.Unknown,
@@ -22,7 +22,7 @@ export const reducer = (state: State = initialState, action: Actions): State => 
     case ActionType.FilterFilms:
       return {...state, filteredFilms: filterFilmsByGenre(action.payload, state.currentGenre)};
     case ActionType.LoadFilms:
-      return {...state, filmsList: adaptFilmsToClient(action.payload), filteredFilms: adaptFilmsToClient(action.payload), isDataLoaded: true};
+      return {...state, films: adaptFilmsToClient(action.payload), filteredFilms: adaptFilmsToClient(action.payload), isDataLoaded: true};
     case ActionType.RequireAuthorization:
       return {...state, authorizationStatus: action.payload};
     case ActionType.RequireLogout:

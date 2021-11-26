@@ -7,18 +7,21 @@ type MovieOverviewProps = {
 
 function MovieOverview({film}:MovieOverviewProps): JSX.Element {
 
-  const filmGrade = (filmScoresCount : any) => {
-    switch (filmScoresCount) {
-      case (filmScoresCount > 0 && filmScoresCount < 3) :
-        return 'Bad';
-      case (filmScoresCount >=3  && filmScoresCount < 5) :
-        return 'Normal';
-      case (filmScoresCount >= 5 && filmScoresCount < 8) :
-        return 'Good';
-      case (filmScoresCount >= 8 && filmScoresCount < 10) :
-        return 'Very good';
-      case (filmScoresCount >= 10) :
-        return 'Awesome';
+  const filmGrade = (filmScoresCount : number) => {
+    if (filmScoresCount > 0 && filmScoresCount < 3) {
+      return 'Bad';
+    }
+    if (filmScoresCount >=3  && filmScoresCount < 5) {
+      return 'Normal';
+    }
+    if (filmScoresCount >= 5 && filmScoresCount < 8) {
+      return 'Good';
+    }
+    if (filmScoresCount >= 8 && filmScoresCount < 10) {
+      return 'Very good';
+    }
+    if (filmScoresCount >= 10) {
+      return 'Awesome';
     }
   };
 
@@ -28,7 +31,7 @@ function MovieOverview({film}:MovieOverviewProps): JSX.Element {
         <div className="film-rating__score">{film.rating}</div>
         <p className="film-rating__meta">
           <span className="film-rating__level">{filmGrade(film.rating)}</span>
-          <span className="film-rating__count">{film.scoresCount}</span>
+          <span className="film-rating__count">{film.scoresCount} ratings</span>
         </p>
       </div>
 
