@@ -11,10 +11,9 @@ import { State } from '../../types/state';
 import { connect, ConnectedProps } from 'react-redux';
 import PrivateRoute from '../private-route/private-route';
 import Loading from '../loading/loading';
-import { comments } from '../../mocks/comments';
 
-const mapStateToProps = ({filmsList, isDataLoaded, authorizationStatus}: State) => ({
-  filmsList,
+const mapStateToProps = ({films, isDataLoaded, authorizationStatus}: State) => ({
+  films,
   isDataLoaded,
   authorizationStatus,
 });
@@ -23,7 +22,7 @@ const connector = connect(mapStateToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-function App({ filmsList, isDataLoaded, authorizationStatus }: PropsFromRedux): JSX.Element {
+function App({ films, isDataLoaded, authorizationStatus }: PropsFromRedux): JSX.Element {
   if (authorizationStatus === AuthorizationStatus.Unknown ||!isDataLoaded) {
     return (
       <Loading />
@@ -41,28 +40,25 @@ function App({ filmsList, isDataLoaded, authorizationStatus }: PropsFromRedux): 
         <PrivateRoute
           exact
           path={AppRoute.MyList}
-          render={() => <MyList films={filmsList} />}
+          render={() => <MyList films={films} />}
         >
         </PrivateRoute>
         <Route exact path={AppRoute.Film}>
-          <MoviePage
-            films = {filmsList}
-            comments = {comments}
-          />
+          <MoviePage />
         </Route>
         <Route exact path={AppRoute.Player}>
           <Player
-            films ={filmsList}
+            films ={films}
           />
         </Route>
         <Route exact path={AppRoute.AddReview}>
           <AddReview
-            films={filmsList}
+            films={films}
           />
         </Route>
         <Route exact path={AppRoute.MyList}>
           <MyList
-            films={filmsList}
+            films={films}
           />
         </Route>
         <Route>

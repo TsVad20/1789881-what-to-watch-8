@@ -3,9 +3,13 @@ import { Film } from './film';
 
 export type State = {
   currentGenre: string,
-  filmsList: Film[],
+  films: Film[],
   filteredFilms: Film[],
   isDataLoaded: boolean,
   authorizationStatus: AuthorizationStatus,
   currentFilm: Film | null,
+  similarFilms: Film[],
+  isSimilarFilmsLoaded: boolean,
+  comments: Comment[],
+  isCommentsLoaded: boolean,
 };

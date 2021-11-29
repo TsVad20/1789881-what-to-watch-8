@@ -1,33 +1,27 @@
-import { useState } from 'react';
-import { Film } from '../../types/film';
-import { Comment } from '../../types/comment';
+import { useState, MouseEvent } from 'react';
 import MovieDetails from '../movie-details/movie-details';
 import MovieOverview from '../movie-overview/movie-overview';
 import MovieReviews from '../movie-reviews/movie-reviews';
 import { Link } from 'react-router-dom';
 
-type TabsProps = {
-  film: Film
-  comments: Comment[]
-}
-
-function Tabs({film, comments}: TabsProps): JSX.Element {
+function Tabs(): JSX.Element {
 
   const [activeTab, setActiveTab] = useState('Overview');
 
-  const handleTab = (evt: any) => {
+  const handleTab = (evt: MouseEvent<HTMLAnchorElement, unknown>) => {
     evt.preventDefault();
-    setActiveTab(evt.target.textContent);
+    const targetEvent = evt.target as HTMLElement;
+    setActiveTab(targetEvent.textContent || '');
   };
 
   const renderActiveTab = (tab: string) => {
     switch (tab) {
       case 'Overview':
-        return <MovieOverview film = {film} />;
+        return <MovieOverview />;
       case 'Details':
-        return <MovieDetails film = {film} />;
+        return <MovieDetails />;
       case 'Reviews':
-        return <MovieReviews comments = {comments} />;
+        return <MovieReviews />;
     }
   };
   return (
