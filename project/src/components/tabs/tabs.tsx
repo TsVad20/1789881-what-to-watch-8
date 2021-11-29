@@ -3,6 +3,7 @@ import MovieDetails from '../movie-details/movie-details';
 import MovieOverview from '../movie-overview/movie-overview';
 import MovieReviews from '../movie-reviews/movie-reviews';
 import { Link } from 'react-router-dom';
+import { Tab } from '../../const';
 
 function Tabs(): JSX.Element {
 
@@ -16,11 +17,11 @@ function Tabs(): JSX.Element {
 
   const renderActiveTab = (tab: string) => {
     switch (tab) {
-      case 'Overview':
+      case Tab.Overview:
         return <MovieOverview />;
-      case 'Details':
+      case Tab.Details:
         return <MovieDetails />;
-      case 'Reviews':
+      case Tab.Review:
         return <MovieReviews />;
     }
   };

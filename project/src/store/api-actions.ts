@@ -28,13 +28,6 @@ export const loginAction = ({email, password}: AuthData): ThunkActionResult =>
     dispatch(requireAuthorization(AuthorizationStatus.Auth));
   };
 
-export const logoutAction = (): ThunkActionResult =>
-  async (dispatch, _getState, api) => {
-    api.delete(APIRoute.Logout);
-    dropToken();
-    dispatch(requireLogout());
-  };
-
 export const fetchFilmAction = (filmId: number): ThunkActionResult =>
   async (dispatch, _getState, api): Promise<void> => {
     const {data} = await api.get<FilmFromServer>(APIRoute.Film.replace(':id', `${filmId}`));

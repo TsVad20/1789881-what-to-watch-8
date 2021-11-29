@@ -13,15 +13,28 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN'
 }
 
-export enum Genres {
+export enum Genre {
   All = 'All genres',
 }
 
 export enum APIRoute {
   Films = '/films',
   Login = '/login',
-  Logout = '/logout',
   Film = '/films/:id',
   Similar = '/films/:id/similar',
   Comments = '/comments/:filmId',
+}
+
+export enum Tab {
+  Overview = 'Overview',
+  Details = 'Details',
+  Review = 'Review',
+}
+
+export enum FilmGrade {
+  Bad = 'Bad',
+  Normal = 'Normal',
+  Good = 'Good',
+  VeryGood = 'Very good',
+  Awesome = 'Awesome',
 }

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
+
 function Footer(): JSX.Element {
+
   return (
     <div className="logo">
       <Link className="logo__link logo__link--light" to={AppRoute.Main}>

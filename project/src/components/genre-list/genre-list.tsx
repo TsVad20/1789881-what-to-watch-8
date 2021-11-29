@@ -1,7 +1,7 @@
 import { Dispatch } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { AppRoute, Genres } from '../../const';
+import { AppRoute, Genre } from '../../const';
 import { changeGenre, filterFilms } from '../../store/action';
 import { Actions } from '../../types/action';
 import { Film } from '../../types/film';
@@ -29,9 +29,9 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 type ConnectedGenreListProps = PropsFromRedux & GenreListProps;
 
-export function GenreList({films, onChangeGenre, onFilterFilms, currentGenre}: ConnectedGenreListProps): JSX.Element {
+function GenreList({films, onChangeGenre, onFilterFilms, currentGenre}: ConnectedGenreListProps): JSX.Element {
   const genres = [
-    Genres.All,
+    Genre.All,
     ...new Set(films.map((film) => film.genre)),
   ];
 

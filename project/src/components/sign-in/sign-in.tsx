@@ -23,7 +23,7 @@ const connector = connect(null, mapDispatchToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-export function SignIn({onSubmit}: PropsFromRedux): JSX.Element {
+function SignIn({onSubmit}: PropsFromRedux): JSX.Element {
   const [userInput, setUserInput] = useState(DEFAULT_FORM_STATE);
   const history = useHistory();
 

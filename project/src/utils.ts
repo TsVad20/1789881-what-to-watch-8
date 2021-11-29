@@ -1,8 +1,8 @@
-import { Genres } from './const';
+import { Genre } from './const';
 import { Film, FilmFromServer } from './types/film';
 
 export const filterFilmsByGenre = (films: Film[], genre: string): Film[] => {
-  if (genre === Genres.All) {
+  if (genre === Genre.All) {
     return films;
   }
 

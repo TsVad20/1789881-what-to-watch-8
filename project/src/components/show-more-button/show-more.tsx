@@ -2,7 +2,7 @@ type ShowMoreProps = {
   onClick: () => void,
 }
 
-export default function ShowMore({onClick}: ShowMoreProps): JSX.Element {
+function ShowMore({onClick}: ShowMoreProps): JSX.Element {
 
   return (
     <div className="catalog__more">
@@ -10,3 +10,5 @@ export default function ShowMore({onClick}: ShowMoreProps): JSX.Element {
     </div>
   );
 }
+
+export default ShowMore;

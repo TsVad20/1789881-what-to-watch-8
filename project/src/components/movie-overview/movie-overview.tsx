@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { useParams } from 'react-router';
+import { FilmGrade } from '../../const';
 import { fetchFilmAction } from '../../store/api-actions';
 import { ThunkAppDispatch } from '../../types/action';
 import { State } from '../../types/state';
@@ -24,19 +25,19 @@ function MovieOverview({currentFilm, getCurrentFilm}:PropsFromRedux): JSX.Elemen
 
   const filmGrade = (filmScoresCount : number) => {
     if (filmScoresCount > 0 && filmScoresCount < 3) {
-      return 'Bad';
+      return FilmGrade.Bad;
     }
     if (filmScoresCount >=3  && filmScoresCount < 5) {
-      return 'Normal';
+      return FilmGrade.Normal;
     }
     if (filmScoresCount >= 5 && filmScoresCount < 8) {
-      return 'Good';
+      return FilmGrade.Good;
     }
     if (filmScoresCount >= 8 && filmScoresCount < 10) {
-      return 'Very good';
+      return FilmGrade.VeryGood;
     }
     if (filmScoresCount >= 10) {
-      return 'Awesome';
+      return FilmGrade.Awesome;
     }
   };
 

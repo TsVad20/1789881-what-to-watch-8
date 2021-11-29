@@ -4,7 +4,7 @@ import { State } from '../../types/state';
 import FilmsList from '../films-list/films-list';
 import Footer from '../footer/footer';
 import GenreList from '../genre-list/genre-list';
-import ShowMore from '../show-more-button/show-more-button';
+import ShowMore from '../show-more-button/show-more';
 
 const mapStateToProps = ({films, filteredFilms}: State) => ({
   films,

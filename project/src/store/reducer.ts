@@ -1,10 +1,10 @@
 import { filterFilmsByGenre, adaptFilmsToClient, adaptToClient } from '../utils';
-import { AuthorizationStatus, Genres } from '../const';
+import { AuthorizationStatus, Genre } from '../const';
 import { Actions, ActionType } from '../types/action';
 import type { State } from '../types/state';
 
 const initialState: State = {
-  currentGenre: Genres.All,
+  currentGenre: Genre.All,
   films: [],
   filteredFilms: [],
   isDataLoaded: false,
