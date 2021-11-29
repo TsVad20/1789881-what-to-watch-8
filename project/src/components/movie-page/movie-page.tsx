@@ -1,21 +1,15 @@
 import React from 'react';
 import Logo from '../logo/logo';
 import MoviePageContent from '../movie-page-content/movie-page-content';
-import { Film } from '../../types/film';
-import { Comment } from '../../types/comment';
 import Tabs from '../tabs/tabs';
 import { useHistory, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { State } from '../../types/state';
 import { ThunkAppDispatch } from '../../types/action';
-import { fetchFilmAction } from '../../store/api-actions';
 import { connect, ConnectedProps } from 'react-redux';
 import Loading from '../loading/loading';
 import { AppRoute } from '../../const';
-
-type MoviePageProps = {
-  comments: Comment[]
-}
+import { fetchFilmAction } from '../../store/api-actions';
 
 const mapStateToProps = ({currentFilm}: State) => ({
   currentFilm,
@@ -30,9 +24,8 @@ const mapDispatchToProps = (dispatch: ThunkAppDispatch) => ({
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
-type ConnectedFilmProps = PropsFromRedux & MoviePageProps;
 
-function MoviePage({comments, currentFilm, getCurrentFilm} : ConnectedFilmProps): JSX.Element {
+function MoviePage({currentFilm, getCurrentFilm} : PropsFromRedux): JSX.Element {
 
   const history = useHistory();
 
@@ -103,11 +96,7 @@ function MoviePage({comments, currentFilm, getCurrentFilm} : ConnectedFilmProps)
             <div className="film-card__poster film-card__poster--big">
               <img src={currentFilm?.backgroundImage} alt={currentFilm?.posterImage} width="218" height="327" />
             </div>
-            <Tabs
-              //id={filmId}
-              film = {currentFilm as Film}
-              comments = {comments}
-            />
+            <Tabs />
           </div>
         </div>
       </section>

@@ -2,7 +2,6 @@ import { AuthorizationStatus } from '../const';
 import { ActionType } from '../types/action';
 import { Film, FilmFromServer } from '../types/film';
 
-
 export const changeGenre = (genre: string) => ({
   type: ActionType.ChangeGenre,
   payload: genre,
@@ -35,4 +34,9 @@ export const loadFilm = (film: FilmFromServer) => ({
 export const loadSimilarFilms = (films: FilmFromServer[]) => ({
   type: ActionType.LoadSimilarFilms,
   payload: films,
+} as const);
+
+export const loadComments = (comments: Comment[]) => ({
+  type: ActionType.LoadComments,
+  payload: comments,
 } as const);

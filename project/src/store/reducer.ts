@@ -1,9 +1,6 @@
 import { filterFilmsByGenre, adaptFilmsToClient, adaptToClient } from '../utils';
 import { AuthorizationStatus, Genres } from '../const';
-import {
-  Actions,
-  ActionType
-} from '../types/action';
+import { Actions, ActionType } from '../types/action';
 import type { State } from '../types/state';
 
 const initialState: State = {
@@ -43,6 +40,12 @@ export const reducer = (state: State = initialState, action: Actions): State => 
         ...state,
         similarFilms: adaptFilmsToClient(action.payload),
         isSimilarFilmsLoaded: true,
+      };
+    case ActionType.LoadComments:
+      return {
+        ...state,
+        comments: action.payload,
+        isCommentsLoaded: true,
       };
     default:
       return state;

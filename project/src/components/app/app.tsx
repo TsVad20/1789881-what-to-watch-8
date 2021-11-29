@@ -11,7 +11,6 @@ import { State } from '../../types/state';
 import { connect, ConnectedProps } from 'react-redux';
 import PrivateRoute from '../private-route/private-route';
 import Loading from '../loading/loading';
-import { comments } from '../../mocks/comments';
 
 const mapStateToProps = ({films, isDataLoaded, authorizationStatus}: State) => ({
   films,
@@ -45,9 +44,7 @@ function App({ films, isDataLoaded, authorizationStatus }: PropsFromRedux): JSX.
         >
         </PrivateRoute>
         <Route exact path={AppRoute.Film}>
-          <MoviePage
-            comments = {comments}
-          />
+          <MoviePage />
         </Route>
         <Route exact path={AppRoute.Player}>
           <Player

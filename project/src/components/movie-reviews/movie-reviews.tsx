@@ -1,10 +1,48 @@
-import { Comment } from '../../types/comment';
+import { connect, ConnectedProps } from 'react-redux';
+import { useParams } from 'react-router';
+import { fetchCommentsAction} from '../../store/api-actions';
+import { ThunkAppDispatch } from '../../types/action';
+import { State } from '../../types/state';
+import Loading from '../loading/loading';
 
-type MovieReviewsProps = {
-  comments: Comment[]
-}
+const mapStateToProps = ({currentFilm, comments, isCommentsLoaded}: State) => ({
+  currentFilm,
+  comments,
+  isCommentsLoaded,
+});
 
-function MovieReviews({comments} : MovieReviewsProps): JSX.Element {
+const mapDispatchToProps = (dispatch: ThunkAppDispatch) => ({
+  getCurrentFilm(id: number) {
+    dispatch(fetchCommentsAction(id));
+  },
+  getComments(id: number) {
+    dispatch(fetchCommentsAction(id));
+  },
+});
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+
+function MovieReviews({currentFilm, getCurrentFilm, comments, isCommentsLoaded, getComments} : PropsFromRedux): JSX.Element {
+
+  const { id }: {id: string} = useParams();
+  const filmId = Number(id);
+
+  if (currentFilm?.id !== filmId) {
+    getCurrentFilm(filmId);
+    return (
+      <Loading />
+    );
+  }
+
+  if (!isCommentsLoaded) {
+    getComments(filmId);
+    return (
+      <Loading />
+    );
+  }
 
   const columnLength = comments.length / 2;
 
@@ -46,4 +84,4 @@ function MovieReviews({comments} : MovieReviewsProps): JSX.Element {
     </div>
   );
 }
-export default MovieReviews;
+export default connector(MovieReviews);

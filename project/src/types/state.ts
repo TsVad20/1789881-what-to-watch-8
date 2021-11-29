@@ -10,6 +10,6 @@ export type State = {
   currentFilm: Film | null,
   similarFilms: Film[],
   isSimilarFilmsLoaded: boolean,
-  comments: Film[],
+  comments: Comment[],
   isCommentsLoaded: boolean,
 };
