@@ -4,6 +4,7 @@ import { APIRoute, AuthorizationStatus } from '../const';
 import type { ThunkActionResult } from '../types/action';
 import { dropToken, saveToken, Token } from '../services/token';
 import { AuthData } from '../types/auth-data';
+import { CommentType } from '../types/comment';
 
 export const fetchFilmsAction = (): ThunkActionResult =>
   async (dispatch, _getState, api): Promise<void> => {
@@ -48,6 +49,6 @@ export const fetchSimilarFilmsAction = (filmId: number): ThunkActionResult =>
 
 export const fetchCommentsAction = (filmId: number): ThunkActionResult =>
   async (dispatch, _getState, api): Promise<void> => {
-    const {data} = await api.get<Comment[]>(APIRoute.Comments.replace(':id', `${filmId}`));
+    const {data} = await api.get<CommentType[]>(APIRoute.Comments.replace(':id', `${filmId}`));
     dispatch(loadComments(data));
   };

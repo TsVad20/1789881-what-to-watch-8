@@ -48,7 +48,7 @@ function MovieReviews({currentFilm, getCurrentFilm, comments, isCommentsLoaded, 
 
   return (
     <div className="film-card__reviews film-card__row">
-      <div className="film-card__reviews-col">
+      <div className="film-card__reviews-col">{comments.length}
 
         {comments.slice(0, columnLength).map((comment) => (
           <div key={comment.id} className="review">

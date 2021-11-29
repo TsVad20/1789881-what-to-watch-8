@@ -21,7 +21,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 
 function MovieDetails({currentFilm, getCurrentFilm}: PropsFromRedux): JSX.Element {
 
-const { id }: {id: string} = useParams();
+  const { id }: {id: string} = useParams();
   const filmId = Number(id);
 
   if (currentFilm?.id !== filmId) {

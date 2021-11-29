@@ -1,4 +1,5 @@
 import { AuthorizationStatus } from '../const';
+import { CommentType } from './comment';
 import { Film } from './film';
 
 export type State = {
@@ -10,6 +11,6 @@ export type State = {
   currentFilm: Film | null,
   similarFilms: Film[],
   isSimilarFilmsLoaded: boolean,
-  comments: Comment[],
+  comments: CommentType[],
   isCommentsLoaded: boolean,
 };

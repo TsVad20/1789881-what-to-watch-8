@@ -1,4 +1,4 @@
-export type Comment = {
+export type CommentType = {
   id: number,
   user: {
     id: number,
@@ -9,7 +9,7 @@ export type Comment = {
   date: string,
 };
 
-export type CommentPost = {
+export type CommentPostType = {
   rating: number,
   comment: string,
 }

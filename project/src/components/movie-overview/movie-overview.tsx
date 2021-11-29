@@ -40,7 +40,7 @@ function MovieOverview({currentFilm, getCurrentFilm}:PropsFromRedux): JSX.Elemen
     }
   };
 
-const { id }: {id: string} = useParams();
+  const { id }: {id: string} = useParams();
   const filmId = Number(id);
 
   if (currentFilm?.id !== filmId) {
