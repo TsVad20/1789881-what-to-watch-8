@@ -1,8 +1,8 @@
 import { FilmFromServer } from '../types/film';
-import { loadComments, loadFilm, loadFilms, loadSimilarFilms, requireAuthorization, requireLogout } from './action';
+import { loadComments, loadFilm, loadFilms, loadSimilarFilms, requireAuthorization } from './action';
 import { APIRoute, AuthorizationStatus } from '../const';
 import type { ThunkActionResult } from '../types/action';
-import { dropToken, saveToken, Token } from '../services/token';
+import { saveToken, Token } from '../services/token';
 import { AuthData } from '../types/auth-data';
 import { CommentType } from '../types/comment';
 
